@@ -1,0 +1,221 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PatientApi</name>
+    </assembly>
+    <members>
+        <member name="T:PatientController">
+            <summary>
+            Контроллер для управления данными пациентов.
+            </summary>
+        </member>
+        <member name="M:PatientController.#ctor(PatientApi.Data.PatientContext)">
+            <summary>
+            Инициализирует новый экземпляр класса с заданным контекстом базы данных.
+            </summary>
+            <param name="context">Контекст базы данных для работы с данными пациентов.</param>
+        </member>
+        <member name="M:PatientController.GetPatients">
+            <summary>
+            Получить список пациентов.
+            </summary>
+            <returns>Список пациентов.</returns>
+            <param>Без параметров.</param>
+        </member>
+        <member name="M:PatientController.GetPatient(System.Guid)">
+            <summary>
+            Получить пациента по ID.
+            </summary>
+            <returns>Пациент.</returns>
+        </member>
+        <member name="M:PatientController.CreatePatient(PatientApi.Models.Patient)">
+            <summary>
+            Создать нового пациента.
+            </summary>
+            <param name="patient">Объект пациента, который нужно создать.</param>
+            <returns>Создан пациент с кодом состояния 201 (Created).</returns>
+            <response code="201">Пациент успешно создан.</response>
+            <response code="400">Переданы неверные данные.</response>
+            <response code="500">Произошла ошибка на сервере.</response>
+        </member>
+        <member name="M:PatientController.UpdatePatient(System.Guid,PatientApi.Models.Patient)">
+            <summary>
+            Обновить существующего пациента.
+            </summary>
+            <param name="id">Идентификатор пациента, которого нужно обновить.</param>
+            <param name="patient">Объект пациента с обновленными данными.</param>
+            <returns>Статус ответа 204 (No Content) при успешном обновлении.</returns>
+            <response code="204">Пациент успешно обновлен.</response>
+            <response code="400">Идентификаторы не совпадают.</response>
+            <response code="404">Пациент не найден.</response>
+            <response code="500">Произошла ошибка на сервере.</response>
+        </member>
+        <member name="M:PatientController.DeletePatient(System.Guid)">
+            <summary>
+            Удалить пациента по идентификатору.
+            </summary>
+            <param name="id">Идентификатор пациента, которого нужно удалить.</param>
+            <returns>Статус ответа 204 (No Content) при успешном удалении.</returns>
+            <response code="204">Пациент успешно удален.</response>
+            <response code="404">Пациент не найден.</response>
+            <response code="500">Произошла ошибка на сервере.</response>
+        </member>
+        <member name="M:PatientController.SearchByBirthDate(System.DateOnly)">
+            <summary>
+            Поиск пациентов по дате рождения.
+            </summary>
+            <param name="birthDate">Дата рождения для поиска пациентов (в формате yyyy-mm-dd).</param>
+            <returns>Список пациентов с указанной датой рождения.</returns>
+            <response code="200">Возвращен список найденных пациентов.</response>
+            <response code="404">Пациенты не найдены.</response>
+            <response code="500">Произошла ошибка на сервере.</response>
+        </member>
+        <member name="T:PatientApi.Data.PatientContext">
+            <summary>
+            Контекст базы данных для управления пациентами.
+            </summary>
+        </member>
+        <member name="M:PatientApi.Data.PatientContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions{PatientApi.Data.PatientContext})">
+            <summary>
+            Инициализирует новый экземпляр класса с заданными параметрами.
+            </summary>
+            <param name="options">Параметры контекста базы данных.</param>
+        </member>
+        <member name="P:PatientApi.Data.PatientContext.Patients">
+            <summary>
+            Представление пациентов в базе данных.
+            </summary>
+        </member>
+        <member name="M:PatientApi.Data.PatientContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <summary>
+            Конфигурация модели данных.
+            </summary>
+            <param name="modelBuilder">Объект для построения модели данных.</param>
+        </member>
+        <member name="T:PatientApi.Migrations.InitialCreate">
+            <inheritdoc />
+        </member>
+        <member name="M:PatientApi.Migrations.InitialCreate.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:PatientApi.Migrations.InitialCreate.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:PatientApi.Migrations.InitialCreate.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:PatientApi.Migrations.AddGenderNActiveCreate">
+            <inheritdoc />
+        </member>
+        <member name="M:PatientApi.Migrations.AddGenderNActiveCreate.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:PatientApi.Migrations.AddGenderNActiveCreate.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:PatientApi.Migrations.AddGenderNActiveCreate.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:PatientApi.Migrations.AddDataOnly">
+            <inheritdoc />
+        </member>
+        <member name="M:PatientApi.Migrations.AddDataOnly.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:PatientApi.Migrations.AddDataOnly.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:PatientApi.Migrations.AddDataOnly.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:PatientApi.Migrations.RemoveNameId">
+            <inheritdoc />
+        </member>
+        <member name="M:PatientApi.Migrations.RemoveNameId.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:PatientApi.Migrations.RemoveNameId.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:PatientApi.Migrations.RemoveNameId.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:PatientApi.Migrations.EditModelPatient">
+            <inheritdoc />
+        </member>
+        <member name="M:PatientApi.Migrations.EditModelPatient.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:PatientApi.Migrations.EditModelPatient.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:PatientApi.Migrations.EditModelPatient.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:PatientApi.Models.Enums">
+            <summary>
+            Класс с перечислениями.
+            </summary>
+        </member>
+        <member name="T:PatientApi.Models.Enums.Gender">
+            <summary>
+            Перечисление для указания пола пациента (0 - Male, 1 - Female, 2 - Other, 3 - Unknown).
+            </summary>
+        </member>
+        <member name="T:PatientApi.Models.Enums.Active">
+            <summary>
+            Перечисление для указания статуса активности (0 - True, 1 - False).
+            </summary>
+        </member>
+        <member name="T:PatientApi.Models.Name">
+            <summary>
+            Представляет имя пациента.
+            </summary>
+        </member>
+        <member name="P:PatientApi.Models.Name.Use">
+            <summary>
+            Указывает, как используется имя (например "официально").
+            </summary>
+        </member>
+        <member name="P:PatientApi.Models.Name.Family">
+            <summary>
+            Фамилия.
+            </summary>
+        </member>
+        <member name="P:PatientApi.Models.Name.Given">
+            <summary>
+            Массив из имени и отчества.
+            </summary>
+        </member>
+        <member name="T:PatientApi.Models.Patient">
+            <summary>
+            Представляет пациента.
+            </summary>
+        </member>
+        <member name="P:PatientApi.Models.Patient.Id">
+            <summary>
+            Уникальный идентификатор.
+            </summary>
+        </member>
+        <member name="P:PatientApi.Models.Patient.Name">
+            <summary>
+            Имя пациента.
+            </summary>
+        </member>
+        <member name="P:PatientApi.Models.Patient.Gender">
+            <summary>
+            Пол.
+            </summary>
+        </member>
+        <member name="P:PatientApi.Models.Patient.BirthDate">
+            <summary>
+            Дата рождения.
+            </summary>
+        </member>
+        <member name="P:PatientApi.Models.Patient.Active">
+            <summary>
+            Статус активности.
+            </summary>
+        </member>
+    </members>
+</doc>
