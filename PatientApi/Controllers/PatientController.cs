@@ -54,6 +54,7 @@ public class PatientController : ControllerBase
     [HttpPost]
     public async Task<ActionResult<Patient>> CreatePatient(Patient patient)
     {
+        patient.BirthDate = DateOnly.Parse(patient.BirthDate.ToString());
         _context.Patients.Add(patient);
         await _context.SaveChangesAsync();
         return CreatedAtAction(nameof(GetPatient), new { id = patient.Id }, patient);
@@ -80,7 +81,7 @@ public class PatientController : ControllerBase
         existingPatient.Gender = patient.Gender;
         existingPatient.BirthDate = patient.BirthDate;
         existingPatient.Active = patient.Active;
-        
+
         existingPatient.Name.Use = patient.Name.Use;
         existingPatient.Name.Family = patient.Name.Family;
         existingPatient.Name.Given = patient.Name.Given;
@@ -126,7 +127,7 @@ public class PatientController : ControllerBase
             .Where(p => p.BirthDate == birthDate)
             .ToListAsync();
 
-        if(patients == null || !patients.Any())
+        if (patients == null || !patients.Any())
         {
             return NotFound();
         }

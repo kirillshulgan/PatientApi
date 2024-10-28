@@ -24,15 +24,14 @@ namespace PatientApiCons
                         family = $"Иванов_{i}",
                         given = new[] { $"Иван_{i}", $"Иванович_{i}" }
                     },
-                    gender = rnd.Next(0,4),
-                    birthDate = DateTime.UtcNow.AddDays(-i).ToString("yyyy-mm-dd"), // Дата рождения
+                    gender = rnd.Next(0, 4),
+                    birthDate = DateTime.UtcNow.AddDays(-i).ToString("yyyy-MM-dd"),
                     active = rnd.Next(0, 2)
                 };
 
                 var json = JsonConvert.SerializeObject(patient);
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-                // Убедитесь, что URL соответствует вашему API
                 var response = await client.PostAsync("http://localhost:5189/api/patient", content);
                 if (response.IsSuccessStatusCode)
                 {
